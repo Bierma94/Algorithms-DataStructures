@@ -1,8 +1,7 @@
-package de.Bierma.Algorithmen.searchAlgorithmen;
+package de.Bierma.Algorithmen.search;
 
 import de.Bierma.Algorithmen.SearchStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

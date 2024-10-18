@@ -1,4 +1,4 @@
-package de.Bierma.Algorithmen.searchAlgorithmen;
+package de.Bierma.Algorithmen.search;
 
 import de.Bierma.Algorithmen.SearchStrategy;
 
@@ -109,6 +109,6 @@ public class InterpolationSearch implements SearchStrategy {
         this.data = data;
         this.key = key;
         return interpolationSearch();
-       // return newInterpolationSearch();    //<---- Hier ein return auskommentieren
+        //return newInterpolationSearch();    //<---- Hier ein return auskommentieren
     }
 }

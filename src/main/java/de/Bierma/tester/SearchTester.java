@@ -9,7 +9,7 @@ import de.Bierma.Algorithmen.SearchStrategy;
  * @author Jannes Bierma (jannes.bierma@stud.hs-emden-leer.de)
  * @version 1.0 - 18.10.2024
  */
-public class SearchTester {
+public class SearchTester implements Runnable {
 
     /** Anzahl der Schritte, die für die Suche benötigt wurden */
     private int steps;
@@ -19,6 +19,11 @@ public class SearchTester {
     private int[] data;
     /** Position des Suchschlüssels im Datenbestand */
     private int pos;
+
+    private String errorMsg;
+
+    /** Suchstrategie */
+    private SearchStrategy strategy;
 
     /**
      * Konstruktor für die Klasse SearchTester
@@ -31,24 +36,34 @@ public class SearchTester {
     }
     /**
      * Testet einen Suchalgorithmus
-     * @param strategy Suchstrategie die getestet werden soll
      */
-    public void test(SearchStrategy strategy) {
-        System.out.println(strategy.getClass().getSimpleName());
+    public void test() {
+        clear();
         try {
             pos = strategy.search(data, key);
             steps = strategy.steps();
-            System.out.println("Position: " + pos + " Schritte: " + steps);
-            if ((pos != -1)) {
-                System.out.println("Gefunder Wert: " + data[pos] + " Gesuchter Wert: " + key);
-            } else {
-                System.out.println("Wert nicht gefunden");
-            }
-            System.out.println("-------------------------------------------------");
         } catch (Exception e) {
-            System.err.println("Fehler: " + e.getMessage());
+            errorMsg = e.getMessage();
         }
     }
+
+    /**
+     * Gibt die Ergebnisse der Suche aus
+     */
+    public void displayResults() {
+        System.out.println(strategy.getClass().getSimpleName());
+        System.out.println("Position: " + pos + " Schritte: " + steps);
+        if ((pos != -1)) {
+            System.out.println("Gefunder Wert: " + data[pos] + " Gesuchter Wert: " + key);
+        } else {
+            System.out.println("Wert nicht gefunden");
+        }
+        if(!errorMsg.isBlank()) {
+            System.err.println("Fehler: " + errorMsg);
+        }
+        System.out.println("-------------------------------------------------");
+    }
+
 
     public int getPosition() {
         return pos;
@@ -58,4 +73,24 @@ public class SearchTester {
         return steps;
     }
 
+    public void setStrategy(SearchStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+
+    /**
+     * Runs this operation.
+     */
+    @Override
+    public void run() {
+        System.out.println(strategy.getClass().getSimpleName()
+                + " gestartet auf Thread: " + Thread.currentThread().getName());
+        test();
+    }
+
+    private void clear() {
+        pos = -1;
+        steps = 0;
+        errorMsg = "";
+    }
 }

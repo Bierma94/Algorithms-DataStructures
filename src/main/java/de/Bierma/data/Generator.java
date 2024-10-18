@@ -1,4 +1,4 @@
-package de.Bierma.Algorithmen.data;
+package de.Bierma.data;
 
 /**
  * Generator
