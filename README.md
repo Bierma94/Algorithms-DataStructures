@@ -14,7 +14,7 @@ not implemented yet
 
 ## Authors
 
-- Jannes Bierma (jannes-bierma@web.de)
+- Jannes Bierma 
 
 
 
