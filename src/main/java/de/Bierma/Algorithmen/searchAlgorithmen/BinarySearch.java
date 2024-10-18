@@ -68,7 +68,6 @@ public class BinarySearch implements SearchStrategy {
 
     @Override
     public int search(int[] data ,int key) {
-        pos = -1;
         this.data = data;
         this.key = key;
         return binarySearch();

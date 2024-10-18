@@ -46,7 +46,7 @@ public class SearchTester {
             }
             System.out.println("-------------------------------------------------");
         } catch (Exception e) {
-            System.out.println("Fehler: " + e.getMessage());
+            System.err.println("Fehler: " + e.getMessage());
         }
     }
 
