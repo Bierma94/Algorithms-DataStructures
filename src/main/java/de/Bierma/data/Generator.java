@@ -1,5 +1,7 @@
 package de.Bierma.data;
 
+import java.util.Random;
+
 /**
  * Generator
  * Copyright (c) Jannes Bierma -All Rights Reserved.
@@ -73,6 +75,22 @@ public class Generator {
             data[i] = i * (int) (Math.random() * (max - min + 1) + min);
         }
         return data;
+    }
+
+    /**
+     * Mischt ein Array durch
+     * @param array zu mischendes Array
+     * @return gemischtes Array
+     */
+    public int[] shuffleArray(int[] array) {
+        Random rand = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+        return array;
     }
 
 }

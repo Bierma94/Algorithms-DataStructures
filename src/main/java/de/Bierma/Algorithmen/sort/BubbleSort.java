@@ -3,46 +3,44 @@ package de.Bierma.Algorithmen.sort;
 import de.Bierma.Algorithmen.SortStrategy;
 
 /**
- * BubbleSort
+ * SimpleBubbleSort
+ * Kein Unterschied zwischen sortierten und undsortierten Array
  * Copyright (c) Jannes Bierma -All Rights Reserved.
  *
  * @author Jannes Bierma (jannes.bierma@stud.hs-emden-leer.de)
  * @version 1.0 - 18.10.2024
  */
-public class SimpleBubbleSort implements SortStrategy {
+public class BubbleSort implements SortStrategy {
 
     /** Anzahl der Schritte */
     private int steps;
     /** Anzahl der Vertauschungen */
     private int swaps;
     /** Singleton */
-    private static SimpleBubbleSort instance;
+    private static BubbleSort instance;
 
-    private SimpleBubbleSort() {}
-
+    private BubbleSort() {}
     /**
      * Singleton
-     * @return Instanz von BubbleSort
+     * @return Instanz von SimpleBubbleSort
      */
-    public static SimpleBubbleSort getInstance() {
+    public static BubbleSort getInstance() {
         if(instance == null) {
-            instance = new SimpleBubbleSort();
+            instance = new BubbleSort();
         }
         return instance;
     }
-
-
     /**
      * Sortiert ein Array mit dem BubbleSort-Algorithmus
      * @param data zu sortierendes Array
      * @return sortiertes Array
      */
-    private int [] simpleBubbleSort(int[] data) {
-        clear();
+    private int [] bubbleSort(int[] data) {
         boolean swapped;
+        int length = data.length -1;
         do {
             swapped = false;
-            for (int i = 0; i < data.length -1; i++) {
+            for (int i = 0; i < length; i++) {
                 steps++;
                 if (data[i] > data[i + 1]) {
                     swaps++;
@@ -52,15 +50,19 @@ public class SimpleBubbleSort implements SortStrategy {
                     swapped = true;
                 }
             }
+            length--;
         } while (swapped);
         return data;
     }
 
-
-
+    /**
+     * Sortiert ein Array mit dem BubbleSort-Algorithmus
+     * @param data zu sortierendes Array
+     * @return sortiertes Array
+     */
     @Override
     public int[] sort(int[] data) {
-        return simpleBubbleSort(data);
+        return bubbleSort(data);
     }
 
     @Override
@@ -73,9 +75,5 @@ public class SimpleBubbleSort implements SortStrategy {
         return swaps;
     }
 
-    private void clear() {
-        steps = 0;
-        swaps = 0;
-    }
 
 }

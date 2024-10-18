@@ -10,5 +10,7 @@ package de.Bierma.Algorithmen;
 public interface SortStrategy {
 
     int [] sort(int[] data);
+    int steps();
+    int swaps();
 
 }

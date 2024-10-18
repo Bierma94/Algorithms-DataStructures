@@ -22,7 +22,6 @@ public class SortTester implements Runnable{
     }
 
     public int[] sort() {
-        clear();
         sortedArray = sortStrategy.sort(unsortedArray);
         return sortedArray;
     }
@@ -44,6 +43,8 @@ public class SortTester implements Runnable{
             for(int i = 0; i < length; i++) {
                 System.out.print(sortedArray[i] + " ");
             }
+            System.out.println();
+            System.out.println("Steps: " + sortStrategy.steps() + " Swaps: " + sortStrategy.swaps());
             System.out.println();
             System.out.println("--------------------------------");
         }
@@ -75,7 +76,4 @@ public class SortTester implements Runnable{
                 + " gestartet auf Thread " + Thread.currentThread().getName());
     }
 
-    private void clear() {
-        sortedArray = null;
-    }
 }
